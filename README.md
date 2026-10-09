@@ -1,12 +1,10 @@
 # Forge de sets – Monster Hunter Wilds
 
-Générateur de sets pour Monster Hunter Wilds, entièrement en français.
-Choisissez votre type d'arme (et ses particularités : type et niveau d'obus de la lancecanon, mélodies,
-bulle et onde d'écho de la corne de chasse, fioles, kinsecte…),
-les talents voulus avec leur niveau, et un algorithme évolutionnaire cherche les meilleures combinaisons
-arme + 5 pièces d'armure + talisman + joyaux.
+Générateur de builds pour Monster Hunter Wilds basé sur un algorithme génétique.
+L'outil permet de choisir son arme principale ainsi que les talents désirés, et va chercher a obtenir la meilleure combinaison d'équipements pour satisfaire la requête.
+Les builds proposés sont constitués d'une arme, des 5 pièces d'armure, du talisman ainsi que des joyaux.
 
-## Démarrage
+## Démarrage en local
 
 ```bash
 npm install
@@ -34,8 +32,8 @@ Relancez `npm run sync` après une mise à jour du jeu ; les fichiers générés
   talents supplémentaires, attaque de l'arme et préférences spécifiques (niveau d'obus) départagent.
 - **Recherche** (`src/engine/ga.ts`) : élagage des pièces dominées, population initiale biaisée,
   sélection par tournoi, croisement uniforme, mutation, élitisme et recherche locale périodique.
-  Tourne dans un Web Worker, avec une graine reproductible.
-- **Objets exclus** : le bouton ⊘ d'un set proposé exclut une arme, une pièce, un talisman ou un joyau
-  que l'on ne possède pas ; la liste est conservée dans le navigateur et appliquée aux recherches suivantes.
+  Tourne dans un Web Worker, avec une seed reproductible.
+- **Blacklist** : le bouton ⊘ d'un set proposé exclut une arme, une pièce, un talisman ou un joyau
+  de la recherche ; la liste est conservée dans le navigateur et appliquée aux recherches suivantes.
 - **Spécificités d'arme** (`src/weapons/specifics.ts`) : registre par type d'arme (filtre + score),
   à étendre pour d'autres armes.
